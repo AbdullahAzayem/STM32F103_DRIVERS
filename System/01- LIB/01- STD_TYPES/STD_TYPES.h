@@ -34,7 +34,6 @@ typedef double f64;
 * STANDARD RETURN TYPES
 *********************************************************************************************************************/
 typedef u8 Std_ReturnType;
-typedef ((void*) 0) NullPointer;
 
 /*********************************************************************************************************************
 * ERROR STATUS
@@ -42,6 +41,7 @@ typedef ((void*) 0) NullPointer;
 #define E_OK 					0x0
 #define E_NOT_OK 				0x1
 #define E_NULL_POINTER			0x2
+#define NullPointer                            ((void*) 0)
 
 
 #endif

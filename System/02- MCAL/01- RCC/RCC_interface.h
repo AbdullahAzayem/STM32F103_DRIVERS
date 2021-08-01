@@ -24,7 +24,7 @@
 #define RCC_PLL			0x2
 
 /*Bus id definitions*/
-#define RCC_AHB_BUS			0
+#define RCC_AHB_BUS	        0
 #define RCC_APB2_BUS		1
 #define RCC_APB1_BUS		2
 
@@ -101,7 +101,7 @@ Parameters (in) : 	u8 Coyp_u8BusId,u8 Copy_u8PeripheralId
 Parameters (out):   void
 Return value    : 	void
 *******************************************************************************/
-Std_ReturnType MRCC_StdReturnTypeEnablePeripheralClock(u8 Coyp_u8BusId,u8 Copy_u8PeripheralId);
+Std_ReturnType MRCC_StdReturnTypeEnablePeripheralClock(u8 Copy_u8BusId,u8 Copy_u8PeripheralId);
 
 /******************************************************************************
 Syntax          :   Std_ReturnType MRCC_Std_ReturnTypeDisablePeripheralClock(u8 Coyp_u8BusId,u8 Copy_u8PeripheralId) 
@@ -112,7 +112,19 @@ Parameters (in) : 	u8 Coyp_u8BusId,u8 Copy_u8PeripheralId
 Parameters (out):   void
 Return value    : 	loc_StdReturnTypeErrorStatus
 *******************************************************************************/
-Std_ReturnType MRCC_Std_ReturnTypeDisablePeripheralClock(u8 Coyp_u8BusId,u8 Copy_u8PeripheralId);
+Std_ReturnType MRCC_Std_ReturnTypeDisablePeripheralClock(u8 Copy_u8BusId,u8 Copy_u8PeripheralId);
+
+
+/******************************************************************************
+Syntax          :   Std_ReturnType RCC_Init(void); 
+Description     :   RCC_Init
+Sync\Async      : 	Async
+Reentrancy      : 	Reentrancy
+Parameters (in) : 	void
+Parameters (out):   void
+Return value    : 	loc_StdReturnTypeErrorStatus
+*******************************************************************************/
+Std_ReturnType RCC_Init(void);
 
 #endif
 

@@ -11,8 +11,8 @@
 
 
 /*Guard file*/
-#ifndef  RCC_private
-#definee RCC_private
+#ifndef  RCC_PRIVATE_H
+#define  RCC_PRIVATE_H
 
 
 /*********************************************************************************************************************
