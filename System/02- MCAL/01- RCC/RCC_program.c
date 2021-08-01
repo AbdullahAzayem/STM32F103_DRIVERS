@@ -42,7 +42,7 @@ Sync\Async      : 	Async
 Reentrancy      : 	Reentrancy
 Parameters (in) : 	u8 Coyp_u8BusId,u8 Copy_u8PeripheralId
 Parameters (out):   void
-Return value    : 	void
+Return value    : 	loc_StdReturnTypeErrorStatus
 *******************************************************************************/
 Std_ReturnType MRCC_StdReturnTypeEnablePeripheralClock(u8 Coyp_u8BusId,u8 Copy_u8PeripheralId)
 {
@@ -54,20 +54,29 @@ Std_ReturnType MRCC_StdReturnTypeEnablePeripheralClock(u8 Coyp_u8BusId,u8 Copy_u
 	
 	if( (RCC_PER_ID_LENGTH <= Copy_u8PeripheralId) && (RCC_BUS_ID_LENGTG <= Copy_u8BusId) )
 	{
+		/*		METHOD-01		*/
  		// /*Get bus offset*/
 		// loc_u8BusOffset = glob_u32BusOffsetArr[Coyp_u8BusId];
 		// /*Set the peripheral clock*/
 		// GET_HW_REG(RCC_BASE_ADDRESS,local_u8BusOffset) |= ( (u32)1 << Copy_u8PeripheralId );
+
+		/*		METHOD-02		*/
+		// /*Set using bit banding*/
+		// SET_BIT_BANDING((RCC_BASE_ADDRESS+local_u8BusOffset), Copy_u8PeripheralId);
 		
+		/*		METHOD-03		*/		
 		switch(Coyp_u8BusId)
 		{
 			case RCC_AHB_BUS:
+				/*Set using read modify write*/
 				SET_BIT(RCC_AHBENR,Copy_u8PeripheralId);
 `					break;
 			case RCC_APB1_BUS:
+				/*Set using read modify write*/
 				SET_BIT(RCC_APBENR1,Copy_u8PeripheralId);
 				break;
 			case RCC_APB2_BUS:
+				/*Set using read modify write*/
 				SET_BIT(RCC_APBENR2,Copy_u8PeripheralId);
 				break;
 			default:
@@ -88,9 +97,9 @@ Std_ReturnType MRCC_StdReturnTypeEnablePeripheralClock(u8 Coyp_u8BusId,u8 Copy_u
 
 /******************************************************************************
 Syntax          :   Std_ReturnType MRCC_Std_ReturnTypeDisablePeripheralClock(u8 Coyp_u8BusId,u8 Copy_u8PeripheralId) 
-Description     :   Enable the peripheral clock
+Description     :   Disable the peripheral clock
 Sync\Async      : 	Async
-Reentrancy      : 	Reentrancy
+Reentrancy      : 	Reentrant and Entrant
 Parameters (in) : 	u8 Coyp_u8BusId,u8 Copy_u8PeripheralId
 Parameters (out):   void
 Return value    : 	loc_StdReturnTypeErrorStatus
@@ -100,23 +109,31 @@ Std_ReturnType MRCC_Std_ReturnTypeDisablePeripheralClock(u8 Coyp_u8BusId,u8 Copy
 	/*Error sattus*/
 	Std_ReturnType loc_StdReturnTypeErrorStatus = E_OK;
 	
-	if( (RCC_PER_ID_LENGTH <= Copy_u8PeripheralId) && (RCC_BUS_ID_LENGTG <= Copy_u8BusId) )
+	if( (RCC_PER_ID_LENGTH <= Copy_u8PeripheralId) && (RCC_BUS_ID_LENGTH <= Copy_u8BusId) )
 	{
+		/*			METHOD-01			*/
 		// /*Get bus offset*/
 		// loc_u8BusOffset = glob_u32BusOffsetArr[Coyp_u8BusId];
 		// /*Set the peripheral clock*/
 		// GET_HW_REG(RCC_BASE_ADDRESS,local_u8BusOffset) &= ~( (u32)1 << Copy_u8PeripheralId );
-		
 
+		/*			METHOD-02			*/
+		// /*Clear using bit banding*/
+		// CLR_BIT_BANDING((RCC_BASE_ADDRESS+local_u8BusOffset), Copy_u8PeripheralId);				
+
+		/*			METHOD-03			*/		
 		switch(Coyp_u8BusId)
 		{
 			case RCC_AHB:
-				CLR_BIT(RCC_AHBENR,Copy_u8PeripheralId);
+				/*Clear using read modify write*/
+				CLR_BIT(RCC_AHBENR,Copy_u8PeripheralId);				
 `					break;
 			case RCC_APB1:
-				CLR_BIT(RCC_APBENR1,Copy_u8PeripheralId);
+				/*Clear using read modify write*/
+				CLR_BIT(RCC_APBENR1,Copy_u8PeripheralId);		
 				break;
 			case RCC_APB2:
+				/*Clear using read modify write*/
 				CLR_BIT(RCC_APBENR2,Copy_u8PeripheralId);
 				break;
 			default:

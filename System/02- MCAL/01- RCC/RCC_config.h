@@ -2,21 +2,16 @@
  *  AUTHOR 	: ABDULLAH AZAYEM
  *  DATE   	: 31-07-2021
  *  MCU 	: STM32
- *  LAYERED : LIB
+ *  LAYERED : MCAL
  *  VERSION	: V01
- * 	FILE   	: STD_TYPES.h
- * 	BRIEF  	: The standard types of all system
+ * 	FILE   	: RCC_config.h
+ * 	BRIEF  	: The reset and clock control configuration file
  * 	DETAILS :   
  *********************************************************************************************************************/
 
+/*Guard file*/
 #ifndef RCC_CONFIG_H_
 #define RCC_CONFIG_H_
-
-
-
-
-
-
 
 
 /* System clock Options
@@ -25,8 +20,6 @@
 	3- RCC_HSE_RC
 	4- RCC_PLL
 */
-
-
 #define RCC_SYSTEM_CLOCK_SOURCE		RCC_HSI	
 
 

@@ -61,12 +61,6 @@
 #define RCC_TIM8EN_BIT_OFFSET					0x0
 
 
-/*Clock Selection*/
-#define HSI_SELECTED 							0x0
-#define HSE_SELECTED 							0x1
-#define PLL_SELECTED 							0x2
-
-
 
 /*********************************************************************************************************************
 * REGISTERS ADDRESSES 
