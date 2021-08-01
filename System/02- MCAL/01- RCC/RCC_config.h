@@ -21,7 +21,15 @@
 	4- RCC_PLL
 */
 #define RCC_SYSTEM_CLOCK_SOURCE		RCC_HSI	
-
+/*PLL clock source
+* 	1- RCC_HSI_DIV2
+*	2- RCC_HSE_DIV2
+*	3- RCC_HSE
+*/
+/*Condition: PLL is selected as a source clock*/
+#if RCC_SYSTEM_CLOCK_SOURCE == RCC_PLL
+#define RCC_PLL_CLOCK_SOURCE 		RCC_HSE_DIV2
+#endif
 
 #endif
 

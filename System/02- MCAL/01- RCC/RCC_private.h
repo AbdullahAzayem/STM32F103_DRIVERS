@@ -16,6 +16,13 @@
 
 
 /*********************************************************************************************************************
+* GLOBAL MACROS
+*********************************************************************************************************************/
+#define RCC_HSI_DIV2	0x1
+#define RCC_HSE_DIV2	0x2
+#define RCC_HSE			0x3
+
+/*********************************************************************************************************************
 * BASE ADDRESSES
 *********************************************************************************************************************/
 #define RCC_BASE_ADDRESS						0x40021000																				/*  RCC base address	   */
@@ -75,6 +82,8 @@
 #define RCC_APB1ENR								(*	( (volatile u32*)(RCC_BASE_ADDRESS + RCC_APB1ENR_OFFSET		)	)	)				/*  RCC_APB1ENR            */
 #define RCC_BDCR								(*	( (volatile u32*)(RCC_BASE_ADDRESS + RCC_BDCR_OFFSET		)	)	)				/*  RCC_BDCR               */
 #define RCC_CSR									(*	( (volatile u32*)(RCC_BASE_ADDRESS + RCC_CSR_OFFSET			)	)	)				/*  RCC_CSR                */
+
+
 
 
 

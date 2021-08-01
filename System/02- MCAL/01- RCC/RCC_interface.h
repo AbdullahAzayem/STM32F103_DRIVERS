@@ -19,9 +19,10 @@
 *  LOCAL MACROS CONSTANT\FUNCTION
 *********************************************************************************************************************/
 /*clocks configuration*/
-#define RCC_HSI			0x0
-#define RCC_HSE			0x1
-#define RCC_PLL			0x2
+#define RCC_HSI				0x1
+#define RCC_HSE_CRYSTAL		0x2	
+#define RCC_HSE_RC      	0x3
+#define RCC_PLL				0x4
 
 /*Bus id definitions*/
 #define RCC_AHB_BUS	        0
@@ -124,7 +125,7 @@ Parameters (in) : 	void
 Parameters (out):   void
 Return value    : 	loc_StdReturnTypeErrorStatus
 *******************************************************************************/
-Std_ReturnType RCC_Init(void);
+Std_ReturnType MRCC_Init(void);
 
 #endif
 

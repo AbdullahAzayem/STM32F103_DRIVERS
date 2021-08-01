@@ -21,7 +21,7 @@ void main(void)
 {
 	Std_ReturnType loc_StdRetTypeErrorStatus = E_OK;
 	
-        loc_StdRetTypeErrorStatus = RCC_Init();
+        loc_StdRetTypeErrorStatus = MRCC_Init();
         loc_StdRetTypeErrorStatus = MRCC_StdReturnTypeEnablePeripheralClock(RCC_APB2_BUS,RCC_APB2_TIM1EN);
         
 	while(1);

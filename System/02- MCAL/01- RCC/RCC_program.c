@@ -161,7 +161,7 @@ Parameters (in) : 	void
 Parameters (out):   void
 Return value    : 	loc_StdReturnTypeErrorStatus
 *******************************************************************************/
-Std_ReturnType RCC_Init(void)
+Std_ReturnType MRCC_Init(void)
 {
 	/*Clock source selection*/
 	#if   RCC_SYSTEM_CLOCK_SOURCE  == 	RCC_HSI
@@ -189,7 +189,17 @@ Std_ReturnType RCC_Init(void)
 		/*Clock selection*/
 		RCC_CFGR = 0x00000002;
 		/*Enable PLL*/
-		RCC_CR = 0x01000000;	
+		RCC_CR = 0x01000000;
+		
+		#if RCC_PLL_CLOCK_SOURCE == RCC_HSI_DIV2
+			
+		#elif RCC_PLL_CLOCK_SOURCE == RCC_HSE_DIV2
+		#elif RCC_PLL_CLOCK_SOURCE == RCC_HSE
+		#else	
+			#error ("Wrong Configuration")
+		#endif
+		
+	
 		/*Polling on PLL ready*/
 		while(1 == GET_BIT(RCC_CR,RCC_PLLRDY_BIT_OFFSET));		
 	#else
