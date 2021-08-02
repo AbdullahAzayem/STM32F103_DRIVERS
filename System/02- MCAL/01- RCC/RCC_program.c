@@ -163,12 +163,12 @@ Return value    : 	loc_StdReturnTypeErrorStatus
 *******************************************************************************/
 Std_ReturnType MRCC_Init(void)
 {		
-
 	RCC_CR   = 0x00000000;
 	RCC_CFGR = 0x00000000;
 	
 	/*Clock source selection*/
 	#if   RCC_SYSTEM_CLOCK_SOURCE  == 	RCC_HSI
+		/* METHOD-01 Clock selection
 		/*Clock selection*/
 		RCC_CFGR = 0x00000000;
 		/* METHOD-02 Clock selection by bit banding
@@ -176,6 +176,7 @@ Std_ReturnType MRCC_Init(void)
 		SET_BIT_BANDING( (RCC_BASE_ADDRESS+RCC_CFGR_OFFSET), 1 , LOW);
 		*/
 		
+		/*METHOD-01 HSI Enable*/
 		/*Enable HSI*/
 		RCC_CR = 0x00000081;
 		
@@ -190,6 +191,7 @@ Std_ReturnType MRCC_Init(void)
 		while(1 == GET_BIT(RCC_CR,RCC_HSIRDY_BIT_OFFSET));
 	#elif RCC_SYSTEM_CLOCK_SOURCE  == 	RCC_HSE_CRYSTAL
 
+		/*METHOD-01 Clock selection*/
 		/*Clock selection*/
 		RCC_CFGR = 0x00000001;
 
@@ -198,6 +200,7 @@ Std_ReturnType MRCC_Init(void)
 		SET_BIT_BANDING( (RCC_BASE_ADDRESS+RCC_CFGR_OFFSET), 1 , LOW  );
 		*/
 
+		/*METHOD-01 HSE_CYSTAL Enable*/
 		/*Enable HSE_CYSTAL*/
 		RCC_CR = 0x00090000; 
 		
@@ -210,6 +213,7 @@ Std_ReturnType MRCC_Init(void)
 		/*Polling on HSE ready*/
 		while(1 == GET_BIT(RCC_CR,RCC_HSERDY_BIT_OFFSET));
 	#elif RCC_SYSTEM_CLOCK_SOURCE  == 	RCC_HSE_RC
+		/*METHOD-01 Clock selection*/
 		/*Clock selection*/
 		RCC_CFGR = 0x00000001;
 
@@ -217,7 +221,8 @@ Std_ReturnType MRCC_Init(void)
 		SET_BIT_BANDING( (RCC_BASE_ADDRESS+RCC_CFGR_OFFSET), 0 , HIGH);
 		SET_BIT_BANDING( (RCC_BASE_ADDRESS+RCC_CFGR_OFFSET), 1 , LOW );
 		*/
-
+		
+		/* METHOD-02 Enable HSE RC by bit banding
 		/*Enable HSE_RC*/
 		RCC_CR = 0x000D0000; 
 
@@ -249,6 +254,7 @@ Std_ReturnType MRCC_Init(void)
 			#error ("Wrong Configuration")
 		#endif
 		
+		/* METHOD-01 Clock selection*/
 		/*Clock selection*/
 		RCC_CFGR = 0x00000002;
 
@@ -256,15 +262,17 @@ Std_ReturnType MRCC_Init(void)
 		SET_BIT_BANDING( (RCC_BASE_ADDRESS+RCC_CFGR_OFFSET), 0, LOW  );
 		SET_BIT_BANDING( (RCC_BASE_ADDRESS+RCC_CFGR_OFFSET), 1, HIGH );
 		*/
+		
+		/*METHOD-01 Enable PLL*/
 		/*Enable PLL*/
 		RCC_CR = 0x01000000;
 
 		/* METHOD-02 Enable PLL by bit banding
-		RCC_CR = 0x00000000;
 		SET_BIT_BANDING( (RCC_BASE_ADDRESS+RCC_CR_OFFSET), 16 ,HIGH);
 		SET_BIT_BANDING( (RCC_BASE_ADDRESS+RCC_CR_OFFSET), 18 ,HIGH);
 		SET_BIT_BANDING( (RCC_BASE_ADDRESS+RCC_CR_OFFSET), 19 ,HIGH);
 		*/
+		
 		/*Polling on PLL ready*/
 		while(1 == GET_BIT(RCC_CR,RCC_PLLRDY_BIT_OFFSET));		
 	#else
