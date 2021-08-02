@@ -18,9 +18,62 @@
 /*********************************************************************************************************************
 * GLOBAL MACROS
 *********************************************************************************************************************/
-#define RCC_HSI_DIV2	0x1
-#define RCC_HSE_DIV2	0x2
-#define RCC_HSE			0x3
+#define RCC_HSI_DIV2			0x1
+#define RCC_HSE_DIV2			0x2
+#define RCC_HSE					0x3
+
+
+/*PLL multiplication value*/
+#define RCC_PLL_MUL_2              0
+#define RCC_PLL_MUL_3              1
+#define RCC_PLL_MUL_4             10
+#define RCC_PLL_MUL_5             11
+#define RCC_PLL_MUL_6            100
+#define RCC_PLL_MUL_7            101
+#define RCC_PLL_MUL_8            110
+#define RCC_PLL_MUL_9            111
+#define RCC_PLL_MUL_10          1000
+#define RCC_PLL_MUL_11          1001
+#define RCC_PLL_MUL_12          1010
+#define RCC_PLL_MUL_13          1011
+#define RCC_PLL_MUL_14          1100
+#define RCC_PLL_MUL_15          1101
+#define RCC_PLL_MUL_16          1110
+
+
+
+/*ADC prescaler*/
+#define RCC_ADC_CLK_DIV2		   0
+#define RCC_ADC_CLK_DIV4		   1
+#define RCC_ADC_CLK_DIV6		  10
+#define RCC_ADC_CLK_DIV8		  11
+
+
+/*APB2 prescaler*/
+#define RCC_APB2_CLK_NOT_DIV	   0
+#define RCC_APB2_CLK_DIV2        100
+#define RCC_APB2_CLK_DIV4        101
+#define RCC_APB2_CLK_DIV8        110
+#define RCC_APB2_CLK_DIV16	     111
+
+/*APB1 prescaler*/
+#define RCC_APB1_CLK_NOT_DIV	   0
+#define RCC_APB1_CLK_DIV2        100
+#define RCC_APB1_CLK_DIV4        101
+#define RCC_APB1_CLK_DIV8        110
+#define RCC_APB1_CLK_DIV16	     111
+
+/*AHB prescaler*/
+#define RCC_AHB_CLK_NOT_DIV 	   0
+#define RCC_AHB_CLK_DIV2    	1000
+#define RCC_AHB_CLK_DIV4    	1001
+#define RCC_AHB_CLK_DIV8    	1010
+#define RCC_AHB_CLK_DIV16   	1011
+#define RCC_AHB_CLK_DIV64   	1100
+#define RCC_AHB_CLK_DIV128  	1101
+#define RCC_AHB_CLK_DIV256  	1110
+#define RCC_AHB_CLK_DIV512  	1111
+
 
 /*********************************************************************************************************************
 * BASE ADDRESSES
@@ -66,6 +119,7 @@
 #define RCC_ADC3EN_BIT_OFFSET					0x0E
 #define RCC_USART1EN_BIT_OFFSET					0x0D
 #define RCC_TIM8EN_BIT_OFFSET					0x0
+#define RCC_PLL_MUL_BIT_OFFSET					0x12
 
 
 
