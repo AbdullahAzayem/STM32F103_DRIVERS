@@ -15,14 +15,15 @@
 #include "BIT_MATH.h"
 
 #include "RCC_interface.h"
-#include "RCC_config.h"
+#include "DIO_interface.h"
 
-void main(void)
+int main(void)
 {
 	Std_ReturnType loc_StdRetTypeErrorStatus = E_OK;
 	
         loc_StdRetTypeErrorStatus = MRCC_Init();
-        loc_StdRetTypeErrorStatus = MRCC_StdReturnTypeEnablePeripheralClock(RCC_APB2_BUS,RCC_APB2_TIM1EN);
-        
+        loc_StdRetTypeErrorStatus = MRCC_StdReturnTypeEnablePeripheralClock(RCC_APB2_BUS,RCC_APB2_IOPAEN);
+        loc_StdRetTypeErrorStatus = MDIO_Std_ReturnTypeSetPinDirection(DIO_PIN2,DIO_OUT_10MHZ_GPIO_PUSH_PULL);
 	while(1);
+	return 0;
 }

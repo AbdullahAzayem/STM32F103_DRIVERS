@@ -19,15 +19,15 @@
 *  LOCAL MACROS CONSTANT\FUNCTION
 *********************************************************************************************************************/
 /*clocks configuration*/
-#define RCC_HSI				0x1
-#define RCC_HSE_CRYSTAL		0x2	
-#define RCC_HSE_RC      	0x3
-#define RCC_PLL				0x4
+#define RCC_HSI					0x1
+#define RCC_HSE_CRYSTAL			0x2	
+#define RCC_HSE_RC      		0x3
+#define RCC_PLL					0x4
 
 /*Bus id definitions*/
-#define RCC_AHB_BUS	        0
-#define RCC_APB2_BUS		1
-#define RCC_APB1_BUS		2
+#define RCC_AHB_BUS	        	  0
+#define RCC_APB2_BUS			  1
+#define RCC_APB1_BUS			  2
 
 /*Peripheral Id bit offset of AHB bus*/
 #define RCC_AHB_DMA1EN			0x0
